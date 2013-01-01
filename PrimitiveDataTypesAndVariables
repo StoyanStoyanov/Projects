@@ -1,0 +1,346 @@
+/* 01.Declare five variables choosing for each of them the most appropriate
+ * of the types byte, sbyte, short, ushort, int, uint, long, ulong to 
+ * represent the following values: 52130, -115, 4825932, 97, -10000.*/
+
+
+using System;
+
+class DeclareVariables
+{
+    static void Main()
+    {
+        ushort a = 52130;
+        sbyte b = -115;
+        int c = 4825932;
+        sbyte d = 97;
+        short e = -10000;
+
+        Console.WriteLine("Variable a has a value of {0}, variable b has a value of {1}, variable c has a value of {2}, variable d has a value of {3}, variable e has a value of:{4}", a, b, c, d, e);
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/*  02.Which of the following values can be assigned to a variable of type float
+ *  and which to a variable of type double: 34.567839023, 12.345, 8923.1234857, 3456.091? */
+
+using System;
+
+class ChoosingDoubleOrFloat
+{
+    static void Main()
+    {
+        double firstDouble = 34.567839023;
+        float firstFloat = 12.345f;
+        double nextDouble = 8923.1234857;
+        float nextFloat = 3456.091f;
+        Console.WriteLine("The first value suitable to use a type double for is {0} and the next one is {1}.", firstDouble, nextDouble);
+        Console.WriteLine("The first value suitable for type float we encounter is {0} and the next is {1}", firstFloat, nextFloat);
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 03. Write a program that safely compares floating-point numbers with precision
+ * of 0.000001. Examples:(5.3 ; 6.01)  false;  (5.00000001 ; 5.00000003)  true*/
+
+using System;
+
+class CompareFloatingNumbers
+{
+    static void Main()
+    {
+        decimal firstNumber = 3.674567832938m;
+        decimal secondNumber = 3.674569878m;
+        Console.WriteLine("Our first number is {0} and our second number is {1}", firstNumber, secondNumber);
+        Console.WriteLine("Now let's safely compare these two  floating point numbers with precision to 0.000001");
+        decimal roundedfirstNumber = Math.Round(firstNumber, 6);
+        decimal roundedsecondNumber = Math.Round(secondNumber, 6);
+        if (firstNumber < secondNumber)
+        {
+            Console.WriteLine("The second number is greater than the first.");
+        }
+        else if (firstNumber > secondNumber)
+        {
+            Console.WriteLine("The first number is greater than second number.");
+        }
+        else
+        {
+            Console.WriteLine("The two numbers are of equal value.");
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 04. Declare an integer variable and assign it with the value 254
+ * in hexadecimal format. Use Windows Calculator to find its hexadecimal representation.*/
+
+using System;
+
+class AssignValues
+{
+    static void Main()
+    {
+        int a = 254;
+        int HexFormatValue = 0xFE;
+        Console.WriteLine("The hexadecimal representation of {0} is \"0xFE\"", a);
+    }
+}
+
+
+/***********************************************************************************************************************/
+
+
+/* 05. Declare a character variable and assign it with the symbol that has Unicode code 72.
+ * Hint: first use the Windows Calculator to find the hexadecimal representation of 72.*/
+
+using System;
+
+class AssigningWithSymbols
+{
+    static void Main()
+    {
+        char valueinhex = '\u0048';
+        char variable = 'H';
+        Console.WriteLine("Code 72 in the Unicode table is {1} stands for the letter {0}", variable, valueinhex);
+    }
+}
+
+
+/***********************************************************************************************************************/
+
+
+/* 06.Declare a boolean variable called isFemale and assign an appropriate value corresponding to your gender. */
+
+using System;
+
+class Gender
+{
+    static void Main()
+    {
+        bool IsFemale = false;
+        Console.WriteLine(IsFemale);
+    }
+}
+
+
+/***********************************************************************************************************************/
+
+
+/* 07.Declare two string variables and assign them with “Hello” and “World”.
+    * Declare an object variable and assign it with the concatenation of the
+    * first two variables (mind adding an interval). Declare a third string 
+    * variable and initialize it with the value of the object variable 
+    * (you should perform type casting).*/
+
+using System;
+
+class PerformingTypeCasting
+{
+    static void Main()
+    {
+        string a = "Hello";
+        string b = "World";
+        object c = (a + " " + b);
+        string d = (string)c;
+
+        Console.WriteLine(d);
+    }
+}
+
+
+/***********************************************************************************************************************/
+
+
+/* 08. Declare two string variables and assign them with following value:
+ * Do it in two different ways: with and without using quoted strings.*/
+
+using System;
+
+class EscapingQuotations
+{
+    static void Main()
+    {
+        string firstWay = @"The ""use"" of quotatiuons causes difficulties";
+        string secondWay = "The \"use\" of quatations causes difficulties";
+        Console.WriteLine(firstWay);
+        Console.WriteLine( secondWay);
+    }
+}
+
+
+/***********************************************************************************************************************/
+
+
+/* 09.Write a program that prints an isosceles triangle of 9 copyright symbols ©.
+ * Use Windows Character Map to find the Unicode code of the © symbol. Note: 
+ * the © symbol may be displayed incorrectly.*/
+
+using System;
+using System.Text;
+
+class IsoscelesTriangle
+{
+    static void Main()
+    {
+        Console.OutputEncoding = Encoding.Unicode;
+        char copyrightSymbol = '\u00A9';
+        byte spaceBetweenSymbols = 3;
+        for (int rows = 0; rows < 3; rows++)
+        {
+            for (int spaceCounter = 0; spaceCounter < spaceBetweenSymbols; spaceCounter++)
+            {
+                Console.Write(" ");
+            }
+            for (int cols = 0; cols <= rows; cols++)
+            {
+                Console.Write(copyrightSymbol);
+            }
+            for (int cols = 0; cols <= rows - 1; cols++)
+            {
+                Console.Write(copyrightSymbol);
+            }
+            spaceBetweenSymbols--;
+
+            Console.WriteLine();
+        }
+    }
+}
+
+
+/***********************************************************************************************************************/
+
+
+/* 10. A marketing firm wants to keep record of its employees. Each record would have the following characteristics
+ * – first name, family name, age, gender (m or f), ID number, unique employee number (27560000 to 27569999). 
+ * Declare the variables needed to keep the information for a single employee 
+ * using appropriate data types and descriptive names. */
+
+using System;
+
+class RecordsOfEmployees
+{
+    static void Main()
+    {
+        string firstName = "Stoyan";
+        string familyName = "Stoyanov";
+        byte employeeAge = 25;
+        string gender = "male";
+        long IDnumber = 232939382093;
+        uint uniqueNumber = 27567890;
+
+        Console.WriteLine("Employee Record:{0} {1} {2} {3} ID:{4} UN:{5}", firstName, familyName, employeeAge, gender, IDnumber, uniqueNumber);
+    }
+       
+}
+
+
+/***********************************************************************************************************************/
+
+
+/* 11. Declare  two integer variables and assign them with 5 and 10 and after that exchange their values.*/
+
+using System;
+
+class ExchangingValues
+{
+    static void Main()
+    {
+        int a = 5;
+        int b = 10;
+        Console.WriteLine(a);
+        Console.WriteLine(b);
+        a = a + 5;
+        b = b - 5;
+        Console.WriteLine(a);
+        Console.WriteLine(b);
+    }
+}
+
+
+/***********************************************************************************************************************/
+
+
+/* 12. Find online more information about ASCII (American Standard Code for Information Interchange) 
+ * and write a program that prints the entire ASCII table of characters on the console.*/
+
+using System;
+using System.Text;
+
+class PrintASCIITable
+{
+    static void Main()
+    {
+        for (int i = 0; i <= 255; i++)
+        {
+            Console.OutputEncoding = Encoding.UTF8;
+            char symbol = (char)i;
+            Console.WriteLine("ASCII symbol {0} and its number {1}", symbol, i);
+        }
+    }
+}
+
+
+/***********************************************************************************************************************/
+
+
+/* 13. Create a program that assigns null values to an integer and to double variables.
+ * Try to print them on the console, try to add some values
+ * or the null literal to them and see the result.*/
+
+using System;
+
+class AssignNullValues
+{
+    static void Main()
+    {
+        int? nullValueOne = null;
+        double? nullValueTwo = null;
+        Console.WriteLine("First variable {0} and second variable {1}", nullValueOne, nullValueTwo);
+        Console.WriteLine(nullValueOne + nullValueTwo);
+        Console.WriteLine(nullValueOne + 140);
+        nullValueOne = 17;
+        Console.WriteLine(nullValueOne.GetValueOrDefault());
+    }
+}
+
+
+/***********************************************************************************************************************/
+
+
+/* 14. A bank account has a holder name (first name, middle name and last name),
+ * available amount of money (balance), bank name, IBAN, BIC code and 3 credit 
+ * card numbers associated with the account. Declare the variables needed to keep
+ * the information for a single bank account using the appropriate
+ * data types and descriptive names.*/
+
+using System;
+
+class BankAccount
+{
+    static void Main()
+    {
+        string firstName = "Stoyan";
+        string middleName = "Nikolov";
+        string lastName = "Stoyanov";
+        string holderName = firstName + " " + middleName + " " + lastName;
+        decimal balance = 5680.50m;
+        string bankName = "UniCreditBulbank";
+        object IBAN = "bg 22393 0923hfjhfg ";
+        object BIC = " bdfd38923-0-";
+        ulong creditCardNumber1 = 32293093281;
+        ulong creditCardNumber2 = 38372890903;
+        ulong creditCardNumber3 = 48748747384;
+    }
+}
+
+
+/* The End */
+
