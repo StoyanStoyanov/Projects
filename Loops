@@ -1,0 +1,679 @@
+/* 01. Write a program that prints all the numbers from 1 to N.*/
+
+using System;
+
+class PrintNumbersFromOneToN
+{
+    static void Main()
+    {
+        Console.Write("Please, enter a value for N:");
+        try
+        {
+            string consoleInputLine = Console.ReadLine();
+            uint N = uint.Parse(consoleInputLine);
+            for (int i = 1; i <= N; i++)
+            {
+                Console.WriteLine(" " + i);
+            }
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("This is not a number!Try again!");
+            Main();
+        }
+        catch (System.OverflowException)
+        {
+            Console.WriteLine("The number you entered is too big.Try again!");
+            Main();
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 02. Write a program that prints all the numbers from 1 to N, that are not divisible by 3 and 7 AT THE SAME TIME. */
+
+using System;
+
+class PrintNumbersNotDivisibleByBoth3and7
+{
+    static void Main()
+    {
+        Console.Write("Enter a value for N:");
+        string consoleInputLine = Console.ReadLine();
+        uint N = uint.Parse(consoleInputLine);
+        Console.WriteLine("Now let's print the numbers that can't be divided at the same time by 7 and 3 in the range from 1 to {0}", N);
+        for (int i = 1; i <= N; i++)
+        {
+            if ((!(i % 3 == 0)) && (!(i % 7 == 0)))
+            {
+                Console.WriteLine(" " + i);
+            }
+            else if ((i % 3 == 0) ^ (i % 7 == 0))
+            {
+                Console.WriteLine(" " + i);
+            }
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 03. Write a program that reads from the console a sequence of N
+ * integer numbers and returns the minimal and maximal of them. */
+
+using System;
+
+class MinAndMaxOfASequence
+{
+    static void Main()
+    {
+        Console.WriteLine("Please, enter the exact number of integers you will input in the console!");
+        try
+        {
+            uint N = uint.Parse(Console.ReadLine());
+            uint[] integerSequence = new uint[N];
+            Console.WriteLine("Now start inputing your integers 1 by 1 each on a separate line:");
+            for (uint i = 0; i < integerSequence.Length; i++)
+            {
+                integerSequence[i] = uint.Parse(Console.ReadLine());
+            }
+
+            Array.Sort(integerSequence);
+            Console.WriteLine("The minimal value integer of the above sequence is {0} and the maximal is {1}!", integerSequence[0], integerSequence[N - 1]);
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("Invalid input data.Try again!");
+            Main();
+        }
+        catch (System.OverflowException)
+        {
+            Console.WriteLine("Too much data :D. Try again!"); 
+            Main();
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 04. Write a program that calculates N!/K! for given N and K (1<K<N). */
+
+
+using System;
+using System.Numerics;
+
+class CalculateNFactorialDividedByKFactorial
+{
+    static void Main()
+    {
+        Console.WriteLine("Please, enter values for N and for K each on a separate line:");
+
+        try
+        {
+            string inputForN = Console.ReadLine();
+            int N = int.Parse(inputForN);
+            string inputForK = Console.ReadLine();
+            int K = int.Parse(inputForK);
+
+            if ((N > K) && (1 < K))
+            {
+                BigInteger Nfactorial = 1;
+                for (int i = 1; i <= N; i++)
+                {
+                    Nfactorial *= i;
+                }
+           
+                BigInteger Kfactorial = 1;
+                for (int i = 1; i <= K; i++)
+                {
+                    Kfactorial *= i;
+                }
+            
+                Console.WriteLine("N!/K! = {0}", Nfactorial / Kfactorial);
+            }
+            else
+            {
+                Console.WriteLine("Please, enter values for N and K so that N > K and K > 1!");
+                Main();
+            }
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("What you've just entered is not a number!.Try again!");
+            Main();
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 05. Write a program that calculates N!*K! / (K-N)! for given N and K (1<N<K). */
+
+using System;
+using System.Numerics;
+
+class CalculateFactorialEquation
+{
+    static void Main()
+    {
+        Console.WriteLine("Please, enter values for N and for K each on a separate line:");
+
+        try
+        {
+            string inputForN = Console.ReadLine();
+            int N = int.Parse(inputForN);
+            string inputForK = Console.ReadLine();
+            int K = int.Parse(inputForK);
+
+            if ((1 < N) && (N < K))
+            {
+                BigInteger NFactorial = 1;
+                for (int i = 1; i <= N; i++)
+                {
+                    NFactorial *= i;
+                }
+
+                BigInteger KFactorial = 1;
+                for (int i = 1; i <= K; i++)
+                {
+                    KFactorial *= i;
+                }
+
+                int J = (K - N);
+                BigInteger JFactorial = 1;
+                for (int i = 1; i < J; i++)
+                {
+                    JFactorial *= i;
+                }
+
+                Console.WriteLine("N!*K!/(K-N)! = {0}", NFactorial * KFactorial / JFactorial);
+            }
+            else
+            {
+                Console.WriteLine("The values you entered for N and K are not in the range specifed ( K > N and N > 1).Try again!");
+                Main();
+            }
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("What you've just entered is not a number!.Try again!");
+            Main();
+        }
+
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 06. Write a program that, for a given two integer numbers N and X,
+       * calculates the sumS = 1 + 1!/X + 2!/X2 + … + N!/XN */
+
+using System;
+
+class CalculateFactorialSum
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter values for integers N and X each on a separate line:");
+        try
+        {
+            string consoleInputN = Console.ReadLine();
+            double N = double.Parse(consoleInputN);
+            string consoleInputX = Console.ReadLine();
+            double X = double.Parse(consoleInputX);
+            if ((N > 0) && (X != 0))
+            {
+                double NFactorial = 1;
+                double sum = 1;
+                for (int i = 1; i <= N; i++)
+                {
+                    NFactorial *= i;
+                    double x = Math.Pow(X, i);
+                    sum += NFactorial / x;
+                }
+                Console.WriteLine("The sum is equal to {0} ", sum);
+            }
+            else
+            {
+                Console.WriteLine("N and X should be positive numbers!");
+                Main();
+            }
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("Invalid input data!Try again!");
+            Main();
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 07. Write a program that reads a number N and calculates the sum of the 
+ * first N members of the sequence of Fibonacci:
+ * 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, …
+ * Each member of the Fibonacci sequence (except the first two)
+ * is a sum of the previous two members. */
+
+using System;
+using System.Numerics;
+
+class SumOfFibonacciSequence
+{
+    static void Main()
+    {
+        Console.WriteLine("Please enter a value for N:");
+        string inputN = Console.ReadLine();
+        try
+        {
+            uint N = uint.Parse(inputN);
+            BigInteger previous = 0;
+            BigInteger next = 1;
+            BigInteger currentSum = 1;
+            BigInteger sequenceSum = 1;
+
+            for (uint i = 3; i <= N; i++) // uint i = 3 we start from third position in the sequence because we have "except the first two" in the conditions of the problem.
+            {
+                currentSum = previous + next;
+                sequenceSum += currentSum;
+                previous = next;
+                next = currentSum;
+            }
+            Console.WriteLine("The sum of the first {0} members of the Fibonacci sequence is {1}.", N, sequenceSum);
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("We all know \"pesho\" is not a valid number:D.Try again!");
+            Main();
+        }
+        catch (System.OverflowException)
+        {
+            Console.WriteLine("Values for N should be positive!Try again!");
+            Main();
+        }
+
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 08. Write a program that calculates the greatest 
+ * common divisor (GCD) of given two numbers.
+ * Use the Euclidean algorithm (find it in Internet). */
+
+using System;
+
+class GreatestCommonDivisorOfTwoNumbers
+{
+    static void Main()
+    {
+        Console.WriteLine("Enter two numbers each on a new line:");
+        try
+        {
+            string firstNumberString = Console.ReadLine();
+            int firstNumber = int.Parse(firstNumberString);
+            string secondNumberString = Console.ReadLine();
+            int secondNumber = int.Parse(secondNumberString);
+            int remainder;
+            int greatestCommonDivisor;
+            if (firstNumber == 0 || secondNumber == 0)
+            {
+                Console.WriteLine("The two numbers should not have a value equal to zero!");
+                Main();
+            }
+            else
+            {
+                do
+                {
+                    remainder = Math.Abs(firstNumber) % Math.Abs(secondNumber);
+                    firstNumber = secondNumber;
+                    secondNumber = remainder;
+                    greatestCommonDivisor = secondNumber;
+                }
+                while (firstNumber % secondNumber != 0);
+                Console.WriteLine("The greatest common divisor of the above numbers is {0}", greatestCommonDivisor);
+            }
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("Invalid numbers input.Try again!");
+            Main();
+        }
+        catch (System.OverflowException)
+        {
+            Console.WriteLine("The numbers you've entered are too big for the program to handle, try with smaller number values.");
+            Main();
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 09. In the combinatorial mathematics, the Catalan numbers are calculated by the following formula:
+ * Catalan(N) = (2N)!/((N + 1)!N!)
+ * Write a program to calculate the Nth Catalan number by given N.
+ */
+
+using System;
+using System.Numerics;
+
+class CatalanNumbers
+{
+    static void Main()
+    {
+        Console.WriteLine("Please, enter a value for N:");
+
+        try
+        {
+            string inputForN = Console.ReadLine();
+            int N = int.Parse(inputForN);
+            
+            if (N >= 0)
+            {
+                
+                BigInteger JFactorial = 1;
+                for (int i = 1; i <= (2*N); i++)
+                {
+                    JFactorial *= i;
+                }
+                BigInteger KFactorial = 1;
+                for (int i = 1; i <= (N+1); i++)
+                {
+                    KFactorial *= i;
+                }
+                BigInteger NFactorial = 1;
+                for (int i = 1; i <= N; i++)
+                {
+                    NFactorial *= i;
+                }
+
+                Console.WriteLine("The {1}th Catalan number = (2N)!/((N+1)!N!) = \n {0}", JFactorial / KFactorial * NFactorial, N);
+            }
+            else
+            {
+                Console.WriteLine("The value you entered for N is not in the range specified (N >= 0).Try again!");
+                Main();
+            }
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("What you've just entered is not a number!Try again!");
+            Main();
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/*Write a program that prints all possible cards from a standard deck of 52 cards (without jokers). 
+ *The cards should be printed with their English names. Use nested for loops and switch-case.
+ */
+
+using System;
+
+class PrintCardNames
+{
+    static void Main()
+    {
+        Console.WriteLine("Start of Card Deck:");
+
+        for (int cards = 2; cards <= 14; cards++)
+        {
+            for (int cardtypes = 1; cardtypes <= 4; cardtypes++)
+            {
+                if (cards <= 10)
+                {
+                    Console.Write(" {0} of ", cards);
+                }
+                else if (cards > 10)
+                {
+                    switch (cards)
+                    {
+                        case 11: Console.Write(" Jack of ");
+                            break;
+                        case 12: Console.Write(" Queen of ");
+                            break;
+                        case 13: Console.Write(" King of ");
+                            break;
+                        case 14: Console.Write(" Ace of ");
+                            break;
+                    }
+                }
+                switch (cardtypes)
+                {
+                    case 1: Console.Write("Hearts");
+                        break;
+                    case 2: Console.Write("Diamonds");
+                        break;
+                    case 3: Console.Write("Clubs");
+                        break;
+                    case 4: Console.Write("Spades");
+                        break;
+                }
+                Console.WriteLine();
+            }
+        }
+        Console.WriteLine("End of Card Deck");
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 12. Write a program that reads from the console a positive
+ * integer number N (N < 20) and outputs
+ * a matrix with a quadratic shape. 
+ */
+
+
+using System;
+
+class Matrix
+{
+    static void Main()
+    {
+        Console.Write("Please, enter a positive value for integer N, so that N < 20: ");
+        string inputN = Console.ReadLine();
+        try
+        {
+            uint N = uint.Parse(inputN);
+            Console.WriteLine();
+
+            if (N < 20)
+            {
+                for (int rows = 1; rows <= N; rows++)
+                {
+                    for (int cols = rows; cols < N + rows; cols++)
+                    {
+                        if (cols >= 10)
+                        {
+                            Console.Write(" {0}", cols);
+                        }
+                        else
+                        {
+                            Console.Write("  {0}", cols);
+                        }
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine();
+                }
+                Console.WriteLine();
+            }
+            else
+            {
+                Console.WriteLine("N is not in the range specified.");
+                Main();
+            }
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("What you've just entered is not a number!Try again!");
+            Main();
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/*
+ * 13. Write a program that calculates for given 
+ * N how many trailing zeros present at the end of the number N!. Examples:
+ * N = 10 -> N! = 3628800 -> 2
+ * N = 20 -> N! = 2432902008176640000 -> 4
+ * Does your program work for N = 50 000?
+ * Hint: The trailing zeros in N! are equal to the number
+ * of its prime divisors of value 5. Think why!
+*/
+
+
+using System;
+
+class NumberOfTrailingZerosAtTheEndOfFactorial
+{
+    static void Main()
+    {
+        Console.WriteLine("Please, enter a value for N:");
+        string ConsoleInput = Console.ReadLine();
+        try
+        {
+            int N = int.Parse(ConsoleInput);
+            int ZeroNumber = 0;
+            int Divider = 5;
+
+            do
+            {
+                ZeroNumber += (N / Divider);
+                Divider *= 5;
+            }
+            while ((N / Divider) >= 1);
+            Console.WriteLine("There are {0} zeroes at the end of the number !{1}", ZeroNumber, N);
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("What you've just entered is not a number!Try again!");
+            Main();
+        }
+    }
+}
+ 
+
+/**********************************************************************************************************************/
+
+
+/*
+ * 14. Write a program that reads a positive integer number N (N < 20)
+ * from console and outputs in the console the numbers 1 ... N 
+ * numbers arranged as a spiral. 
+ */
+        
+
+using System;
+
+class MatrixWithNumbersArrangedAsASpiral
+{
+    enum Move 
+    { 
+        forward, downward, back, up 
+    }
+ 
+    static void Main()
+    {
+        Console.Write("Please enter a value for N so that N < 20.The number you will enter is: ");
+        
+        string consoleInput = Console.ReadLine();
+        Console.WriteLine();
+        Console.WriteLine();
+        try
+        {
+            int N = int.Parse(consoleInput);
+            int[,] matrix = new int[N, N];
+            int row = 0;
+            int col = 0;
+            Move directionOfSpiral = Move.forward;
+
+            if (N < 20)
+            {
+                for (int i = 1; i <= (N * N); i++)
+                {
+                    matrix[row, col] = i;
+                    switch (directionOfSpiral)
+                    {
+                        case Move.forward:
+                            col++;
+                            if ((col == (N - 1)) || (matrix[row, col + 1] > 0))
+                            {
+                                directionOfSpiral = Move.downward;
+                            }
+                            break;
+                        case Move.downward:
+                            row++;
+                            if ((row == (N - 1)) || (matrix[row + 1, col] > 0))
+                            {
+                                directionOfSpiral = Move.back;
+                            }
+                            break;
+                        case Move.back:
+                            col--;
+                            if ((col == 0) || (matrix[row, col - 1] > 0))
+                            {
+                                directionOfSpiral = Move.up;
+                            }
+                            break;
+                        case Move.up:
+                            row--;
+                            if ((row == 0) || (matrix[row - 1, col] > 0))
+                            {
+                                directionOfSpiral = Move.forward;
+                            }
+                            break;
+                    }
+                }
+
+                for (int rows = 0; rows < N; rows++)
+                {
+                    for (int cols = 0; cols < N; cols++)
+                    {
+                        Console.Write(" {0,3} ", matrix[rows, cols]);
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Enter values for N in the range specified!");
+                Main();
+            }
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("What you've just entered is not a number!Try again!");
+            Main();
+        }
+    }
+}
+
+/* The End */
