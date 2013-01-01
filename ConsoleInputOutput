@@ -1,0 +1,290 @@
+/* 01. Write a program that reads 3 integer numbers from the console and prints their sum.*/
+
+using System;
+
+class PrintIntegerSum
+{
+    static void Main()
+    {
+        Console.WriteLine("Please, enter 3 numbers each on a separate line!");
+        string firstNumber = Console.ReadLine();
+        string secondNumber = Console.ReadLine();
+        string thirdNumber = Console.ReadLine();
+        int a = int.Parse(firstNumber);
+        int b = int.Parse(secondNumber);
+        int c = int.Parse(thirdNumber);
+        Console.WriteLine("The sum of the numbers the numbers you entered is {0}", a+b+c);
+
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 02. Write a program that reads the radius r of a circle and prints its perimeter and area.*/
+
+using System;
+
+class CirclePerimeterAndArea
+{
+    static void Main()
+    {
+        string radius = Console.ReadLine();
+        double r = int.Parse(radius);
+        double area = Math.PI * r * r;
+        Console.WriteLine(area);
+        double perimeter = 2 * Math.PI * r;
+        Console.WriteLine(perimeter);
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 03. A company has name, address, phone number, fax number, web site and manager.
+ * The manager has first name, last name, age and a phone number. Write a program 
+ * that reads the information about a company and its manager 
+ * and prints them on the console*/
+
+using System;
+
+class ReadAndPrintCompanyInfo
+{
+    static void Main()
+    {
+        string name = Console.ReadLine();
+        string address = Console.ReadLine();
+        int phoneNumber = int.Parse(Console.ReadLine());
+        int faxNumber = int.Parse(Console.ReadLine());
+        string webSite = Console.ReadLine();
+        string managerFirstName = Console.ReadLine();
+        string managerLastName = Console.ReadLine();
+        sbyte age = sbyte.Parse(Console.ReadLine());
+        int managerPhoneNumber = int.Parse(Console.ReadLine());
+        Console.WriteLine("You've entered the following information about the company:company name: {0} , address: {1}, phone number: {2}, fax number: {3}, web site: {4}, manager's first name is: {5}, manager's last name is: {6}, age: {7} and phone number",
+            name, address, phoneNumber, faxNumber, webSite, managerFirstName, managerLastName, age, managerPhoneNumber);
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 04. Write a program that reads two positive integer numbers and prints how many numbers p
+ * exist between them such that the reminder of the division by 5 is 0 (inclusive). 
+ * Example: p(17,25) = 2.*/
+
+using System;
+
+class IntegerDivision
+{
+    static void Main()
+    {
+        Console.WriteLine("Please, insert two numbers, each on a separate line!");
+        string firstNumInput = Console.ReadLine();
+        int firstNumber = int.Parse(firstNumInput);
+        string secondNumInput = Console.ReadLine();
+        int secondNumber = int.Parse(secondNumInput);
+        int numberCount = 0;
+        for (int i = firstNumber; i <= secondNumber; i++)
+        {
+            if(i % 5 == 0)
+            {
+                numberCount++;
+            }
+        }
+        Console.WriteLine("There are {0} numbers divisible by 5 between the numbers you inserted", numberCount);
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 05. Write a program that gets two numbers from the console and prints the greater of them.
+ * Don’t use if statements.*/
+
+using System;
+
+class PrintBiggerNumber
+{
+    static void Main()
+    {
+        Console.WriteLine("Please, enter your first number!");
+        string firstNumberInput = Console.ReadLine();
+        decimal firstNumber = decimal.Parse(firstNumberInput);
+        Console.WriteLine("Please enter your second number!");
+        string secondNumberInput = Console.ReadLine();
+        decimal secondNumber = decimal.Parse(secondNumberInput);
+        decimal biggerNumber = Math.Max(firstNumber, secondNumber);
+        Console.WriteLine("{0} is the bigger number!", biggerNumber);
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/*  06.Write a program that reads the coefficients a, b and c of
+ * a quadratic equation ax2+bx+c=0 and solves it (prints its real roots).*/
+
+using System;
+
+class QuadraticEquation
+{
+    static void Main()
+    {
+        double a = int.Parse(Console.ReadLine());
+        double b = int.Parse(Console.ReadLine());
+        double c = int.Parse(Console.ReadLine());
+        double discriminanta = b * b - 4 * a * c;
+        if (discriminanta > 0)
+        {
+            double xOne = (-b + Math.Sqrt(discriminanta)) / 2 * a;
+            double xTwo = (-b - Math.Sqrt(discriminanta)) / 2 * a;
+            Console.WriteLine("There are two real roots - x1: {0} and x2: {1}", xOne, xTwo);
+        }
+        else if (discriminanta == 0)
+        {
+            double xOne = -(b / 2 * a);
+            Console.WriteLine("We have one real root - x1: {0}", xOne);
+        }
+        else
+        {
+            Console.WriteLine("We have no real roots");
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 07. Write a program that gets a number n and after that
+ * gets more n numbers and calculates and prints their sum. */
+
+using System;
+
+class PrintTheSumOfnNumbers
+{
+    static void Main()
+    {
+        int n = int.Parse(Console.ReadLine());
+        int sum = 0;
+        int number;
+        if (n > 0)
+        {
+            for (int i = 0; i < n; i++)
+            {
+                Console.WriteLine("Please, enter a number!");
+                number = int.Parse(Console.ReadLine());
+                sum += number;
+            }
+            Console.WriteLine("The sum of the numbers is: {0}", sum);
+        }
+        else Console.WriteLine("You've entered invalid data.Try again!");
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 08. Write a program that reads an integer number n from the console
+ * and prints all the numbers in the interval [1..n], each on a single line.*/
+
+using System;
+
+class LineOfNNumbers
+{
+    static void Main()
+    {
+        Console.WriteLine("Please enter the last number of the sequence!");
+        int number = int.Parse(Console.ReadLine());
+        for (int i = 0; i <= number; i++)
+        {
+            Console.WriteLine(i);
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 09. Write a program to print the first 100 members of the sequence of Fibonacci:
+ * 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, …*/
+
+using System;
+
+class FibonacciSequence
+{
+    static void Main()
+    {
+        decimal firstNumber = 0;
+        decimal secondNumber = 1;
+        decimal sum = 0;
+        Console.WriteLine(firstNumber);
+        Console.WriteLine(secondNumber);
+        for (int i = 1; i < 100; i++)
+        {
+            sum = firstNumber + secondNumber;
+            firstNumber = secondNumber;
+            secondNumber = sum;
+            Console.WriteLine(sum);
+
+        }
+
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 10. Write a program to calculate the sum (with accuracy of 0.001):
+ * 1 + 1/2 - 1/3 + 1/4 - 1/5 + ...*/
+
+using System;
+
+class AccurateCalculation
+{
+    static void Main()
+    {
+        decimal sum = 1;
+        decimal Sum = -1;
+        for (decimal i = 2; i <= 9950; i++)
+        {
+            if (i % 2 == 0)
+            {
+                sum = sum + (1 / i);
+                Console.WriteLine(sum);
+            }
+            else
+            {
+                sum = sum - (1 / i);
+                Console.WriteLine(sum);
+            }
+
+            if ((sum - Sum) == 0.001M)
+            {
+                break;
+            }
+            else
+            {
+                Sum = sum;
+            }
+
+        }
+        Console.WriteLine(sum);
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+
+
