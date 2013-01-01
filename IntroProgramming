@@ -1,0 +1,161 @@
+/* 02.Create, compile and run a “Hello C#” console application. */
+
+using System;
+
+class MyFirstCSharpApp
+{
+    static void Main()
+    {
+        
+        Console.WriteLine("Hello, C#!");
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 03.Modify the application to print your name. */
+
+using System;
+
+class PrintMyName
+{
+    static void Main()
+    {
+        Console.WriteLine("My name is Stoyan");
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 04.Write a program to print the numbers 1, 101 and 1001.*/
+
+using System;
+
+class PrintNumbers
+{
+    static void Main()
+    {
+        Console.WriteLine(1);
+        Console.WriteLine(101);
+        Console.WriteLine(1001);
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 06.Create console application that prints your first and last name. */
+
+using System;
+
+class PrintMyFirstAndLastName
+{
+    static void Main()
+    {
+        Console.WriteLine("Stoyan Stoyanov");
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 07.Create a console application that prints the current date and time. */
+
+using System;
+
+class PrintTheCurrentDateAndTime
+{
+    static void Main()
+    {
+        Console.WriteLine(DateTime.Now);
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 08.Create a console application that calculates and prints the square of the number 12345. */
+
+using System;
+
+class CalcTheSquareOfTheNumber12345
+{
+    static void Main()
+    {
+        Console.WriteLine(12345*12345);
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* Write a program that prints the first 10 members of the sequence: 2, -3, 4, -5, 6, -7, ... */
+
+using System;
+
+class PrintMembersOfASequence
+{
+    static void Main()
+    {
+        for (int i = 2; i <= 11; i++)
+        {
+            if (i % 2 == 0)
+            {
+                Console.WriteLine(i);
+            }
+            else
+            {
+                Console.WriteLine(-i);
+            }
+        }
+    }
+}
+
+
+/**********************************************************************************************************************/
+
+
+/* 12* Write a program to read your age from the console and print how old you will be after 10 years. */
+
+using System;
+
+class PrintMyAgeInTenYears
+{
+    static void Main()
+    {
+        Console.WriteLine("How old are you?");
+        try
+        {
+            string Age = Console.ReadLine();
+            int CurrentAge = byte.Parse(Age);
+            int FutureAge = CurrentAge + 10;
+            Console.WriteLine("You are {0} now and in ten years you are going to be {1}.", CurrentAge, FutureAge);
+            Console.WriteLine("Well done!");
+            Console.WriteLine("Now come to papa to receive your candy!");
+        }
+        catch (System.FormatException)
+        {
+            Console.WriteLine("Be a good girl now and tell me the truth, you do realise this is not a valid answer to my question, don't you? You make me repeat myself...");
+            Main();
+        }
+        catch (System.OverflowException)
+        {
+            Console.WriteLine("You shouldn't have to be so old mate ... unless you are not from around here...");
+            Console.WriteLine("Please, try again...");
+            Main();
+        }
+    }
+}
+
+
+/* The End */
+
+
